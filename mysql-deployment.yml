@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-db
+  labels:
+    app: sample-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sample-db
+  template:
+    metadata:
+      labels:
+        app: sample-db
+    spec:
+      containers:
+      - name: sample-db
+        image: mysql:latest
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: root_password
+        - name: MYSQL_DATABASE
+          value: bookstore
+        - name: MYSQL_USER
+          value: appuser
+        - name: MYSQL_PASSWORD
+          value: admin
+        ports:
+        - containerPort: 3306
+          name: mysql
+        volumeMounts:
+        - name: sample-db-persistent-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: sample-db-persistent-storage
+        persistentVolumeClaim:
+          claimName: sample-db-pv-claim
+

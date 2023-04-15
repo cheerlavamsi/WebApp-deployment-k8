@@ -1,0 +1,11 @@
+image:
+  tag: 8.0.27-debian-10-r45
+
+persistence:
+  enabled: true
+  size: 8Gi
+  accessMode: ReadWriteOnce
+
+auth:
+  rootPassword: mypassword
+
