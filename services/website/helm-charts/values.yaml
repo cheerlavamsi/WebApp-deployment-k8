@@ -1,11 +1,11 @@
 replicaCount: 1
 
 image:
-  repository: nginx
+  repository: devteds/demo-bookstore-website:1.0
   pullPolicy: IfNotPresent
   
 service:
   name: website
-  type: ClusterIP
+  type: LoadBalancer
   port: 80
   targetport: 80
