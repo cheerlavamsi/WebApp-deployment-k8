@@ -1,0 +1,11 @@
+replicaCount: 1
+
+image:
+  repository: nginx
+  pullPolicy: IfNotPresent
+  
+service:
+  name: website
+  type: ClusterIP
+  port: 80
+  targetport: 80
